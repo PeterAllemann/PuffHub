@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
+import os
 
 TRAIN_DATA = np.array([])
 TEST_DATA = np.array([])
@@ -19,9 +20,12 @@ def initialize_data():
     """
     Initialize the data from MNIST test and train set.
     """
+    file_path = os.path.dirname(os.path.abspath(__file__))
+    train_data_path = os.path.join(file_path, '../data/mnist-csv/mnist_train.csv')
+    test_data_path = os.path.join(file_path, '../data/mnist-csv/mnist_test.csv')
 
-    train_set = pd.read_csv('DATA/mnist-csv/mnist_train.csv', header=None)
-    test_set = pd.read_csv('DATA/mnist-csv/mnist_test.csv', header=None)
+    train_set = pd.read_csv(train_data_path, header=None)
+    test_set = pd.read_csv(test_data_path, header=None)
 
     # build train and test set without the labels
     global TRAIN_DATA, TEST_DATA
@@ -184,5 +188,5 @@ def combined_computation():
 initialize_data()
 linear_svm()
 polynomial_kernel()
-rbf_kernel()
-combined_computation()
+#rbf_kernel()
+#combined_computation()
