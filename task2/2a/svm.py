@@ -28,22 +28,22 @@ def initialize_data():
 
     # build train and test set without the labels
     global TRAIN_DATA, TEST_DATA
-    DATA = train_set.iloc[:, 1:784].values
+    data = train_set.iloc[:, 1:784].values
     TEST_DATA = test_set.iloc[:, 1:784].values
 
     # get the labels
     global TRAIN_LABELS, TEST_LABELS
-    LABELS = train_set.iloc[:, 0].values
+    labels = train_set.iloc[:, 0].values
     TEST_LABELS = test_set.iloc[:, 0].values
 
     n_train = 50000
 
-    TRAIN_DATA = DATA[:n_train]     # 48000
-    TRAIN_LABELS = LABELS[:n_train]   # 48000
+    TRAIN_DATA = data[:n_train]         # 50000
+    TRAIN_LABELS = labels[:n_train]     # 50000
 
     global VAL_DATA, VAL_LABELS
-    VAL_DATA = DATA[n_train:]       # 12000
-    VAL_LABELS = LABELS[n_train:]     # 12000
+    VAL_DATA = data[n_train:]           # 10000
+    VAL_LABELS = labels[n_train:]       # 10000
 
 
 def linear_svm():
@@ -55,31 +55,18 @@ def linear_svm():
     print("### Linear kernel")
 
     tuned_parameters = [{'kernel': ['linear'], 'C': C_RANGE}]
-    score = 'accuracy'
-
-    print("# Tuning hyper-parameters for %s" % score)
-    svc = GridSearchCV(svm.SVC(), tuned_parameters, scoring=score, iid=False, cv=3, return_train_score=True)
-    svc.fit(VAL_DATA, VAL_LABELS)
-    best_params = svc.best_params_
+    best_params, svc = tune_parameters('linear kernel', tuned_parameters)
 
     print("# Best parameters set found on validation set:")
     print(best_params)
 
-    print("# Grid scores on train set:")
-    means = svc.cv_results_['mean_test_score']
-    stds = svc.cv_results_['std_test_score']
-
-    for mean, std, params in zip(means, stds, svc.cv_results_['params']):
-        print("%0.3f (+/-%0.03f) for %r" % (mean, std * 2, params))
+    print_grid_scores(svc)
 
     print("# Fit SVM with train set:")
-    svc_optimized = svm.SVC(kernel='linear', C=best_params['C'])
-    svc_optimized.fit(TRAIN_DATA, TRAIN_LABELS)
+    svc_optimized_linear = svm.SVC(kernel='linear', C=best_params['C'])
+    svc_optimized_linear.fit(TRAIN_DATA, TRAIN_LABELS)
 
-    print("# Predict on test set:")
-    predicted = svc_optimized.predict(TEST_DATA)
-    accuracy = accuracy_score(TEST_LABELS, predicted)
-    print('Accuracy on test set: {:.4f}'.format(accuracy))
+    predict(svc_optimized_linear)
 
 
 def polynomial_kernel():
@@ -91,32 +78,18 @@ def polynomial_kernel():
     print("### Polynomial kernel")
 
     tuned_parameters = [{'kernel': ['poly'], 'gamma': GAMMA_RANGE, 'degree': DEGREE_RANGE, 'C': C_RANGE}]
-    score = 'accuracy'
-
-    print("# Tuning hyper-parameters for %s" % score)
-    svc = GridSearchCV(svm.SVC(), tuned_parameters, scoring=score, iid=False, cv=3, return_train_score=True)
-    svc.fit(VAL_DATA, VAL_LABELS)
-    best_params = svc.best_params_
+    best_params, svc = tune_parameters('polynomial kernel', tuned_parameters)
 
     print("# Best parameters set found on validation set:")
     print(best_params)
 
-    print("# Grid scores on validation set:")
-    means = svc.cv_results_['mean_test_score']
-    stds = svc.cv_results_['std_test_score']
-
-    for mean, std, params in zip(means, stds, svc.cv_results_['params']):
-        print("%0.3f (+/-%0.03f) for %r" % (mean, std * 2, params))
-    print()
+    print_grid_scores(svc)
 
     print("# Fit SVM with train set:")
-    svc_optimized = svm.SVC(kernel='poly', C=best_params['C'], degree=best_params['degree'], gamma=best_params['gamma'])
-    svc_optimized.fit(TRAIN_DATA, TRAIN_LABELS)
+    svc_optimized_poly = svm.SVC(kernel='poly', C=best_params['C'], degree=best_params['degree'], gamma=best_params['gamma'])
+    svc_optimized_poly.fit(TRAIN_DATA, TRAIN_LABELS)
 
-    print("# Predict on test set:")
-    predicted =svc_optimized.predict(TEST_DATA)
-    accuracy = accuracy_score(TEST_LABELS, predicted)
-    print('Accuracy on test set: {:.4f}'.format(accuracy))
+    predict(svc_optimized_poly)
 
 
 def rbf_kernel():
@@ -127,31 +100,43 @@ def rbf_kernel():
 
     print("### RBF kernel")
     tuned_parameters = [{'kernel': ['rbf'], 'gamma': GAMMA_RANGE, 'C': C_RANGE}]
-    score = 'accuracy'
 
-    print("# Tuning hyper-parameters for %s" % score)
-    svc = GridSearchCV(svm.SVC(), tuned_parameters, scoring=score, iid=False, cv=3, return_train_score=True)
-    svc.fit(VAL_DATA, VAL_LABELS)
-    best_params = svc.best_params_
+    best_params, svc = tune_parameters('RBF kernel', tuned_parameters)
 
     print("# Best parameters set found on development set:")
     print(best_params)
 
-    print("# Grid scores on development set:")
-    means = svc.cv_results_['mean_test_score']
-    stds = svc.cv_results_['std_test_score']
+    print_grid_scores(svc)
 
-    for mean, std, params in zip(means, stds, svc.cv_results_['params']):
+    print("# Fit SVM with train set:")
+    svc_optimized_rbf = svm.SVC(kernel='rbf', C=best_params['C'], gamma=best_params['gamma'])
+    svc_optimized_rbf.fit(TRAIN_DATA, TRAIN_LABELS)
+
+    predict(svc_optimized_rbf)
+
+
+def tune_parameters(model, tuned_parameters):
+    print("# Tuning hyper-parameters for %s" % model)
+
+    svc = GridSearchCV(svm.SVC(), tuned_parameters, scoring='accuracy', iid=False, cv=3, return_train_score=True)
+    svc.fit(VAL_DATA, VAL_LABELS)
+
+    return svc.best_params_, svc
+
+
+def print_grid_scores(model):
+    print("# Grid scores on validation set:")
+    means = model.cv_results_['mean_test_score']
+    stds = model.cv_results_['std_test_score']
+
+    for mean, std, params in zip(means, stds, model.cv_results_['params']):
         print("%0.3f (+/-%0.03f) for %r" % (mean, std * 2, params))
     print()
 
-    print("# Fit SVM with train set:")
 
-    svc_optimized = svm.SVC(kernel='rbf', C=best_params['C'], gamma=best_params['gamma'])
-    svc_optimized.fit(TRAIN_DATA, TRAIN_LABELS)
-
+def predict(model):
     print("# Predict on test set:")
-    predicted = svc_optimized.predict(TEST_DATA)
+    predicted = model.predict(TEST_DATA)
     accuracy = accuracy_score(TEST_LABELS, predicted)
     print('Accuracy on test set: {:.4f}'.format(accuracy))
 
