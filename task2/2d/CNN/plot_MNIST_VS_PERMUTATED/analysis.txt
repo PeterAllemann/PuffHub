@@ -1,0 +1,7 @@
+Analysis of results
+
+- Test accuracy on the permutated MNIST dataset is lower than on the regular MNIST dataset
+- Accuracy on the training set and on the validation set is also lower on the permutated MNIST dataset, and the accuracy on the validation set is not very stable
+- But accuracy still increases on the permutated MNIST dataset, maybe there are more epochs needed to achieve a better accuracy
+
+- The permutated MNIST dataset is more complex to learn for the CNN, so a lower accuracy is not surprising. You also can expect a slower increase of the accuracy during the epochs.
