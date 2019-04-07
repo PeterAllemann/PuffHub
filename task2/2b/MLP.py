@@ -21,21 +21,29 @@ class PR_MLP(nn.Module):
     def __init__(self, output_channels=10, **kwargs):
         super(PR_MLP, self).__init__()
 
-        self.expected_input_size = 28*28*3
+        self.expected_input_size = (28,28)
 
-        hidden = 20 //we specified it in the json file
-
-        # First layer
+        hidden = 20
+	
+        if 'hidden_size' in kwargs: 
+            hidden = kwargs['hidden_size']
+	
+	# First layer
         self.fc1 = nn.Sequential(
-            nn.Linear(self.expected_input_size, hidden),
+            Flatten(),
+            nn.Linear((28*28*3),  hidden),
+	    nn.ReLU()
         )
 
         # Classification layer
-        self.fc2 = nn.Sequential(
+        self.fc2 = nn.Sequential(	
             nn.Linear(hidden, output_channels)
         )
 
+
     def forward(self, x):
+
+
         """
         Computes forward pass on the network
 
