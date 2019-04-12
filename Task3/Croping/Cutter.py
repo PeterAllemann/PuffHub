@@ -21,7 +21,25 @@ newImArray[:,:,:3] = imArray[:,:,:3]
 
 # transparency (4th column)
 newImArray[:,:,3] = mask*255
+for x in range(newImArray.shape[0]):
+    for y in range (newImArray.shape[1]):
+        if 0 == newImArray[x][y][3]:
+            newImArray[x][y][0] = 0
+            newImArray[x][y][1] = 0
+            newImArray[x][y][2] = 0
 
 # back to Image from numpy
 newIm = Image.fromarray(newImArray, "RGBA")
+newIm = newIm.crop(newIm.getbbox())
 newIm.save("out.png")
+
+'''
+# argwhere will give you the coordinates of every non-zero point
+true_points = np.argwhere(dat)
+# take the smallest points and use them as the top left of your crop
+top_left = true_points.min(axis=0)
+# take the largest points and use them as the bottom right of your crop
+bottom_right = true_points.max(axis=0)
+out = dat[top_left[0]:bottom_right[0]+1,  # plus 1 because slice isn't
+    top_left[1]:bottom_right[1]+1]  # inclusive
+'''
