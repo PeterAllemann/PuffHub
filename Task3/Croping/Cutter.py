@@ -2,12 +2,6 @@ import numpy
 from PIL import Image, ImageDraw
 import svgpathtools as svg
 
-# read image as RGB and add alpha (transparency)
-im = Image.open("270.jpg").convert("RGBA")
-
-# convert to numpy (for convenience)
-imArray = numpy.asarray(im)
-
 # Read SVG file
 paths = [0]*15
 attributes = [0]*15
@@ -32,30 +26,35 @@ for h in range(len(paths)): # File 270 to 304
         polygons.append(polygon)
         ids.append(attributes[h][i]['id'])
 
-# create mask
-maskIm = Image.new('L', (imArray.shape[1], imArray.shape[0]), 0)
-ImageDraw.Draw(maskIm).polygon(polygons[0], outline=1, fill=1)
-mask = numpy.array(maskIm)
+for i in range(len(polygons)):
+    # read image as RGB and add alpha (transparency)
+    im = Image.open('../images/' + ids[i][0:3] + '.jpg' ).convert("RGBA")
 
-# assemble new image (uint8: 0-255)
-newImArray = numpy.empty(imArray.shape,dtype='uint8')
+    # convert to numpy (for convenience)
+    imArray = numpy.asarray(im)
 
-# colors (three first columns, RGB)
-newImArray[:,:,:3] = imArray[:,:,:3]
+    # create mask
+    maskIm = Image.new('L', (imArray.shape[1], imArray.shape[0]), 0)
+    ImageDraw.Draw(maskIm).polygon(polygons[i], outline=1, fill=1)
+    mask = numpy.array(maskIm)
 
-# transparency (4th column)
-newImArray[:,:,3] = mask*255
+    # assemble new image (uint8: 0-255)
+    newImArray = numpy.empty(imArray.shape,dtype='uint8')
 
-'''
-for x in range(newImArray.shape[0]):
-    for y in range (newImArray.shape[1]):
-        if 0 == newImArray[x][y][3]:
-            newImArray[x][y][0] = 0
-            newImArray[x][y][1] = 0
-            newImArray[x][y][2] = 0
-'''
+    # colors (three first columns, RGB)
+    newImArray[:,:,:3] = imArray[:,:,:3]
 
-# back to Image from numpy
-newIm = Image.fromarray(newImArray, "RGBA")
-newIm = newIm.crop(newIm.getbbox())
-newIm.save("../Cropped-images/out.png")
+    # transparency (4th column)
+    newImArray[:,:,3] = mask*255
+
+    for x in range(newImArray.shape[0]):
+        for y in range (newImArray.shape[1]):
+            if 0 == newImArray[x][y][3]:
+                newImArray[x][y][0] = 0
+                newImArray[x][y][1] = 0
+                newImArray[x][y][2] = 0
+
+    # back to Image from numpy
+    newIm = Image.fromarray(newImArray, "RGBA")
+    newIm = newIm.crop(newIm.getbbox())
+    newIm.save('../Cropped-images/' + ids[i] + '.png')
