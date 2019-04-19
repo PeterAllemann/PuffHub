@@ -47,14 +47,12 @@ for i in range(len(polygons)):
     # transparency (4th column)
     newImArray[:,:,3] = mask*255
 
-    for x in range(newImArray.shape[0]):
-        for y in range (newImArray.shape[1]):
-            if 0 == newImArray[x][y][3]:
-                newImArray[x][y][0] = 0
-                newImArray[x][y][1] = 0
-                newImArray[x][y][2] = 0
+    nonZeroCoords = numpy.argwhere(newImArray[:,:,3])
+    topLeft = nonZeroCoords.min(axis=0)
+    bottomRight = nonZeroCoords.max(axis=0)
+    croppedImArray = newImArray[topLeft[0]:bottomRight[0]+1, topLeft[1]:bottomRight[1]+1]
 
     # back to Image from numpy
-    newIm = Image.fromarray(newImArray, "RGBA")
+    newIm = Image.fromarray(croppedImArray, "RGBA")
     newIm = newIm.crop(newIm.getbbox())
     newIm.save('../Cropped-images/' + ids[i] + '.png')
