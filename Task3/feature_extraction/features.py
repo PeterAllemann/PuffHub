@@ -117,30 +117,3 @@ def extract_features(img):
     return np.asarray(f, dtype=float)
 
 
-PATH = "../Cropped-images/"
-imgs = [img for img in os.listdir(PATH) if img.endswith(".png")] 
-
-
-
-analitycs = calc_mean_std("../Cropped-images/", 5)
-
-
-img = imgs[0]
-
-# read Image
-img = Image.open(PATH + img).convert('L')
-
-# resize image to 100 x 100 pixels
-img = img.resize((100,100))
-
-# convert PIL IMG to numpy array
-img = np.array(img)
-
-# color the all pixel from 0 to 10 black
-img[0:10,0:10] = 0
-
-f = extract_features(img)
-
-
-ft = normalize_features(f, 5)
-
