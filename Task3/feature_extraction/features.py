@@ -11,6 +11,8 @@ from PIL import Image
 BLACK = 0
 IMG_HEIGHT = 100
 
+PATH = "../Cropped-images/"
+
 # get index of the lower contour
 def lower_contour(x):
     black_pixels = np.where(x == BLACK)
