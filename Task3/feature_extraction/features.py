@@ -93,16 +93,13 @@ def normalize_features(feature_vector, nbr_features, z=None):
         feature_vector[4::nbr_features] /= (IMG_HEIGHT - 1)
     
         return feature_vector
-        
-        
+
     else:
         for i, (mean, std) in enumerate(z):
             feature_vector[i::nbr_features] = (feature_vector[i::nbr_features] - mean) / std
             
         return feature_vector
             
-    
-
 
 # extract features for an image per column
 def extract_features(img):

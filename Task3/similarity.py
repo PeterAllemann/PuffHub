@@ -7,12 +7,14 @@ from fastdtw import fastdtw
 percentage = 0.9
 limit = 0.2
 
-def calculateDistances(word, words):
+
+def computeDist(word, words):
     distances = list()
     for i in words:
         dist, x = fastdtw(np.array(word.featureVector), np.array(i.featureVector), dist=euclidean)
         distances.append((dist, i))
     return distances
+
 
 def getThreshold(distances):
     distances = sorted(distances, key=lambda x: x[0])
@@ -30,11 +32,13 @@ def getThreshold(distances):
         largest = 40
     return (abs(largest - distances[0][0])*percentage)+distances[0][0]
 
+
 def showPlot(distances, threshhold):
     blah = [x[0] for x in distances]
     plt.plot(blah)
     plt.axhline(y=threshhold, color='r')
     plt.show()
+
 
 def getMostSimilar(distances):
     threshhold =  getThreshold(distances)
@@ -50,5 +54,5 @@ def getMostSimilar(distances):
 
 
 def getSimilarImages(word, words):
-    distances = calculateDistances(word, words)
+    distances = computeDist(word, words)
     return getMostSimilar(distances)
