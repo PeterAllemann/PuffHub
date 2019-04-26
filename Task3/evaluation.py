@@ -75,3 +75,10 @@ def evaluation(spotted_dict, test_samples, total_words, keyword):
     print("Precision: ", get_precision(tp, fp))
     # print("Accuracy: ", get_accuracy(tp, total_words))
     print("---------------------------------------------------")
+
+
+def print_final_statistics():
+    print("\nTotal Recall & Precision:")
+    print("N:", TOP_N)
+    print("Recall:", get_recall(tp_total, fn_total))
+    print("Precision:", get_precision(tp_total, fp_total))
