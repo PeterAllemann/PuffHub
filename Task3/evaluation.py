@@ -8,23 +8,9 @@ IMG_ENDING = ".png"
 TRANSCRIPTION_PATH = './ground-truth/transcription.txt'
 KEYWORDS = "task/keywords.txt"
 
-TOP_N = 50
-
 tp_total = 0
 fp_total = 0
 fn_total = 0
-
-
-def get_tp_total():
-    return tp_total
-
-
-def get_fp_total():
-    return fp_total
-
-
-def get_fn_total():
-    return fn_total
 
 
 def get_recall(tp, fn):
@@ -77,8 +63,8 @@ def evaluation(spotted_dict, test_samples, total_words, keyword):
     print("---------------------------------------------------")
 
 
-def print_final_statistics():
+def print_final_statistics(top_n):
     print("\nTotal Recall & Precision:")
-    print("N:", TOP_N)
+    print("N:", top_n)
     print("Recall:", get_recall(tp_total, fn_total))
     print("Precision:", get_precision(tp_total, fp_total))
