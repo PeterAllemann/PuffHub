@@ -4,6 +4,6 @@ from Task3.evaluation import print_final_statistics
 # define number of samples to compare
 top_n = 50
 
-
+# perform keyword spotting
 keyword_spotter(top_n)
 print_final_statistics(top_n)
