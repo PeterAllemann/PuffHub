@@ -1,18 +1,15 @@
 import os
 from PIL import Image
-from Task3.feature_extraction.features import extract_features
+from Task3.features import extract_features
 from Task3.sample_service import get_train_sample, get_test_sample
 from Task3.evaluation import evaluation
-from Task3.DTW.DTW import dtw
-import time
+
 from fastdtw import fastdtw
 from scipy.spatial.distance import euclidean
 
 IMG_PATH = "Cropped-images/"
 KEYWORDS = "task/keywords.txt"
 IMG_ENDING = ".png"
-
-TOP_N = 50
 
 
 def calculate_test_features():
@@ -72,5 +69,5 @@ def keyword_spotter(top_n):
                         dist_dict[filename[0:9]] = dist
 
         # print dist_dict
-        evaluation(dist_dict, test_sample, total_words, k)
+        evaluation(dist_dict, test_sample, k)
         i = i+1

@@ -7,6 +7,7 @@ IMG_PATH = "Cropped-images/"
 IMG_ENDING = ".png"
 TRANSCRIPTION_PATH = './ground-truth/transcription.txt'
 KEYWORDS = "task/keywords.txt"
+RESULTS_PATH = 'results.txt'
 
 tp_total = 0
 fp_total = 0
@@ -27,14 +28,9 @@ def get_precision(tp, fp):
         return float(tp) / (tp + fp)
 
 
-# def get_accuracy(tp, total_words):
-#     return tp/total_words
-
-
-def evaluation(spotted_dict, test_samples, total_words, keyword):
+def evaluation(spotted_dict, test_samples, keyword):
     # compute FP, FN, TP for each image
     fp = 0
-    fn = 0
     tp = 0
 
     total_samples = len(test_samples)
@@ -53,18 +49,42 @@ def evaluation(spotted_dict, test_samples, total_words, keyword):
     fp_total = fp_total + fp
     fn_total = fn_total + fn
 
-    # print("\n", keyword)
+    recall = get_recall(tp, fn)
+    precision = get_precision(tp, fp)
+
+    save_results(keyword, tp, fp, fn, recall, precision)
     print("TP: ", tp)
     print("FP: ", fp)
     print("FN: ", fn)
-    print("Recall: ", get_recall(tp, fn))
-    print("Precision: ", get_precision(tp, fp))
-    # print("Accuracy: ", get_accuracy(tp, total_words))
+    print("Recall: ", recall)
+    print("Precision: ", precision)
     print("---------------------------------------------------")
 
 
 def print_final_statistics(top_n):
+    recall = get_recall(tp_total, fn_total)
+    precision = get_precision(tp_total, fp_total)
+
+    save_final_statistics(top_n, recall, precision)
+
     print("\nTotal Recall & Precision:")
     print("N:", top_n)
-    print("Recall:", get_recall(tp_total, fn_total))
-    print("Precision:", get_precision(tp_total, fp_total))
+    print("Recall:", recall)
+    print("Precision:", precision)
+
+
+def save_results(keyword, tp, fp, fn, recall, precision):
+    out = "Keyword:" + format(keyword) + "\nTP: " + format(tp) + "\nFP: " + format(fp) + "\nFN: " + format(fn) + \
+          "\nRecall: " + format(recall) + "\nPrecision: " + format(precision) + "\n----------------------------------\n"
+    write_to_file(out)
+
+
+def save_final_statistics(top_n, recall, precision):
+    out = "\nTotal Recall & Precision\nN: " + format(top_n) + "\nRecall: " + format(recall) + "\nPrecision: " + \
+          format(precision)
+    write_to_file(out)
+
+
+def write_to_file(out):
+    with open(RESULTS_PATH, "a") as file:
+        file.write(out)
