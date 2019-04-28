@@ -41,7 +41,8 @@ def keyword_spotter(top_n):
         test_samples = get_test_samples(k)
 
         img = Image.open(IMG_PATH + train_sample + IMG_ENDING)
-        x = extract_features(img)
+        features = extract_features(img)
+        x = normalize_features(features, 5)
 
         dist_dict = {}
         total_words = 0
