@@ -1,25 +1,30 @@
+"""
+Cropps
+"""
+
 import numpy
 from PIL import Image, ImageDraw
 import svgpathtools as svg
 from skimage import filters
 
-# Get trainng paths
-paths = [0]*15
-attributes = [0]*15
+# Get training paths
+paths = [0] * 15
+attributes = [0] * 15
+
 for i in range(10):
     paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/27' + str(i) + '.svg')
 
 # Get test paths
-for i in range(10,15):
-    paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/30' + str(i-10) + '.svg')
+for i in range(10, 15):
+    paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/30' + str(i - 10) + '.svg')
 
-# convert for conveniance or how ever this should be spelled
+# convert for convenience
 polygons = []
 ids = []
-for h in range(len(paths)): # File 270 to 304
-    for i in range(len(paths[h])): # number of words per image
+for h in range(len(paths)):  # File 270 to 304
+    for i in range(len(paths[h])):  # number of words per image
         polygon = []
-        for j in range(len(paths[h][i])): # length of each path/polygon
+        for j in range(len(paths[h][i])):  # length of each path/polygon
             polygon.append((paths[h][i][j][0].real, paths[h][i][j][0].imag))
         polygons.append(polygon)
         ids.append(attributes[h][i]['id'])
@@ -27,7 +32,7 @@ for h in range(len(paths)): # File 270 to 304
 # Cut and save words as separate images
 for i in range(len(polygons)):
     # read image as greyscale
-    im = Image.open('../images/' + ids[i][0:3] + '.jpg' ).convert('L')
+    im = Image.open('../images/' + ids[i][0:3] + '.jpg').convert('L')
 
     # convert to array
     imArray = numpy.asarray(im)
@@ -41,15 +46,15 @@ for i in range(len(polygons)):
     nonZeroCoords = numpy.argwhere(mask)
     topLeft = nonZeroCoords.min(axis=0)
     bottomRight = nonZeroCoords.max(axis=0)
-    mask = mask[topLeft[0]:bottomRight[0]+1, topLeft[1]:bottomRight[1]+1]
-    imArray = imArray[topLeft[0]:bottomRight[0]+1, topLeft[1]:bottomRight[1]+1]
-    
+    mask = mask[topLeft[0]:bottomRight[0] + 1, topLeft[1]:bottomRight[1] + 1]
+    imArray = imArray[topLeft[0]:bottomRight[0] + 1, topLeft[1]:bottomRight[1] + 1]
+
     # binarize
     newImArray = numpy.copy(imArray)
-    newImArray[0==mask] = 255
+    newImArray[0 == mask] = 255
     threshold = filters.threshold_sauvola(newImArray)
-    newImArray[newImArray<=threshold] = 0
-    newImArray[newImArray>threshold] = 255
+    newImArray[newImArray <= threshold] = 0
+    newImArray[newImArray > threshold] = 255
 
     # convert array to image
     newIm = Image.fromarray(newImArray, 'L')
