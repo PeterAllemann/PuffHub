@@ -3,8 +3,6 @@ Handles the feature extraction.
 """
 
 import numpy as np
-# import os
-# from PIL import Image
 
 IMAGE_PATH = "../Cropped-images/"
 BLACK = 0
@@ -56,31 +54,6 @@ def black_white_transitions(x):
     return counter
 
 
-# def calc_mean_std(train, nbr_features):
-#     imgs = [img for img in os.listdir(train) if img.endswith(".png")]
-#
-#     features = []
-#
-#     for img in imgs:
-#         img = Image.open(IMAGE_PATH + img).convert('L')
-#         img = img.resize((100, 100))
-#         img = np.array(img)
-#
-#         f = extract_features(img)
-#         features.append(f)
-#
-#     features = np.array(features)
-#
-#     res = []
-#
-#     for i in range(nbr_features):
-#         mean = np.mean(features[:, i::nbr_features].flatten())
-#         std = np.std(features[:, i::nbr_features].flatten())
-#         res.append((mean, std))
-#
-#     return res
-
-
 def normalize_features(feature_vector, nbr_features, z=None):
     if z is None:
 
@@ -101,7 +74,7 @@ def normalize_features(feature_vector, nbr_features, z=None):
             feature_vector[i::nbr_features] = (feature_vector[i::nbr_features] - mean) / std
 
         return feature_vector
-            
+
 
 # extract features for an image per column
 def extract_features(img):
