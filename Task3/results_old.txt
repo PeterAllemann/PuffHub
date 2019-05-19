@@ -1,0 +1,873 @@
+Keyword:A-l-e-x-a-n-d-r-i-a
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:C-a-p-t-a-i-n
+
+TP: 4
+FP: 46
+FN: 1
+Recall: 0.8
+Precision: 0.08
+----------------------------------
+Keyword:C-l-o-t-h-e-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:C-l-o-t-h-i-n-g
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:C-o-l-o-n-e-l
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:C-o-m-m-i-s_s-s-a-r-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:C-o-u-r-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:C-u-m-b-e-r-l-a-n-d
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+Keyword:D-i-c-k
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:D-o-c-t-o-r
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:E-n-s-i-g-n
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:F-o-r-t
+
+TP: 1
+FP: 49
+FN: 1
+Recall: 0.5
+Precision: 0.02
+----------------------------------
+Keyword:F-o-r-t-s_pt
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:F-r-e-d-e-r-i-c-k-s-b-u-r-g-h-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:G-e-o-r-g-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:G-u-a-r-d
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:I-n-s-t-r-u-c-t-i-o-n-s-s_pt
+
+TP: 3
+FP: 47
+FN: 1
+Recall: 0.75
+Precision: 0.06
+----------------------------------
+Keyword:J-o-h-n
+
+TP: 1
+FP: 49
+FN: 2
+Recall: 0.333333333333
+Precision: 0.02
+----------------------------------
+Keyword:L-e-t-t-e-r-s
+
+TP: 5
+FP: 45
+FN: 1
+Recall: 0.833333333333
+Precision: 0.1
+----------------------------------
+Keyword:L-i-e-u-t-e-n-a-n-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:M-a-j-o-r
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:M-r-s_pt
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:O-f-f-i-c-e-r-s
+
+TP: 2
+FP: 48
+FN: 1
+Recall: 0.666666666667
+Precision: 0.04
+----------------------------------
+Keyword:O-r-d-e-r
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:O-r-d-e-r-s
+
+TP: 4
+FP: 46
+FN: 2
+Recall: 0.666666666667
+Precision: 0.08
+----------------------------------
+Keyword:O-r-d-e-r-s-s_pt
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:P-a-r-o-l-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:R-e-c-r-u-i-t-s
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:R-e-g-i-m-e-n-t
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:R-e-g-i-m-e-n-t-s_pt
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:R-e-n-d-e-z-v-o-u-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:R-e-t-u-r-n
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+Keyword:R-o-b-e-r-t
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:S-a-l-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-e-r-g-e-a-n-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-e-r-g-e-a-n-t-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-h-i-r-t-s-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-o-l-d-i-e-r-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-t-e-w-a-r-t-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-t-o-r-e-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:S-u-i-t-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:V-i-r-g-i-n-i-a
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:W-a-g-g-o-n-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:W-a-s-h-i-n-g-t-o-n-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:W-i-n-c-h-e-s-t-e-r
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:W-i-n-c-h-e-s-t-e-r-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:W-i-n-c-h-e-s-t-e-r-s_qo
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:a-b-s-o-l-u-t-e-l-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:a-r-r-i-v-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:a-r-r-i-v-e-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:a-t-e-l-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:c-a-m-p-s_pt
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:c-a-r-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:c-a-r-e-f-u-l
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:c-a-r-r-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:d-a-y
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:d-e
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:d-e-l-i-v-e-r
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:d-e-l-i-v-e-r-e-d
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:d-e-s-e-r-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:d-i-r-e-c-t-i-o-n-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:d-i-s-p-a-t-c-h
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:e-n-g-a-g-e-d
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:e-n-l-i-s-t-e-d
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:e-n-t-e-r
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:e-s-c-o-r-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:f-u-r-n-i-s-h
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:g-r-e-a-t-l-y
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+Keyword:h-u-n-d-r-e-d
+
+TP: 1
+FP: 49
+FN: 1
+Recall: 0.5
+Precision: 0.02
+----------------------------------
+Keyword:i-m-m-e-d-i-a-t-e-l-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:j-o-i-n
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:l-e-f-t
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:m-a-d-e
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:m-a-k-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:m-a-r-c-h
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:m-a-r-c-h-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:m-e-d-i-a-t-e-l-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:m-e-n
+
+TP: 0
+FP: 50
+FN: 3
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:m-e-n-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:n-u-m-b-e-r
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:o-p-p-o-r-t-u-n-i-t-y
+
+TP: 2
+FP: 48
+FN: 0
+Recall: 1.0
+Precision: 0.04
+----------------------------------
+Keyword:o-r-d-e-r
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:o-r-d-e-r-e-d
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:p-a-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:p-l-a-c-e
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+Keyword:p-o-u-n-d-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:p-r-o-v-i-d-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:p-r-o-v-i-s-i-o-n-s-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:p-u-r-c-h-a-s-e
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:q-u-a-n-t-i-t-y
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:r-e-c-e-i-p-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:r-e-c-e-i-v-e
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:r-e-c-e-i-v-e-d
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:r-e-m-a-i-n
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:r-e-p-a-i-r
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:s-e-n-d
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:s_GW
+
+TP: 0
+FP: 50
+FN: 2
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:s_et-c-s_pt
+
+TP: 2
+FP: 48
+FN: 3
+Recall: 0.4
+Precision: 0.04
+----------------------------------
+Keyword:t-e-r-m-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:t-h-i-n-g-s
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+Keyword:t-w-e-l-v-e
+
+TP: 0
+FP: 50
+FN: 1
+Recall: 0.0
+Precision: 0.0
+----------------------------------
+Keyword:u-n-f-i-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:u-t-m-o-s-t
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:w-a-g-g-o-n-s
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:w-a-g-g-o-n-s-s_cm
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+Keyword:w-a-n-t-e-d
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+Keyword:w-a-n-t-i-n-g
+
+TP: 1
+FP: 49
+FN: 0
+Recall: 1.0
+Precision: 0.02
+----------------------------------
+
+Total Recall & Precision
+N: 50
+Recall: 0.432432432432
+Precision: 0.00598130841121Keyword:A-l-e-x-a-n-d-r-i-a
+
+TP: 0
+FP: 50
+FN: 0
+Recall: None
+Precision: 0.0
+----------------------------------
+
+Total Recall & Precision
+N: 50
+Recall: None
+Precision: 0.0
