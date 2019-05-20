@@ -1,0 +1,19 @@
+
+ acc:0.796 k=1 cn=1 ce=1
+ acc:0.796 k=2 cn=1 ce=1
+ acc:0.988 k=3 cn=1 ce=1
+ acc:0.98 k=4 cn=1 ce=1
+ acc:0.988 k=5 cn=1 ce=1
+ acc:0.976 k=10 cn=1 ce=1
+ acc:0.972 k=15 cn=1 ce=1
+ acc:0.924 k=50 cn=1 ce=1
+ acc:0.8 k=100 cn=1 ce=1
+ acc:0.796 k=1 cn=1 ce=10
+ acc:0.796 k=2 cn=1 ce=10
+ acc:0.992 k=3 cn=1 ce=10
+ acc:0.992 k=4 cn=1 ce=10
+ acc:0.992 k=5 cn=1 ce=10
+ acc:0.988 k=10 cn=1 ce=10
+ acc:0.984 k=15 cn=1 ce=10
+ acc:0.92 k=50 cn=1 ce=10
+ acc:0.8 k=100 cn=1 ce=10

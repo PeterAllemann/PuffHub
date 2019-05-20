@@ -1,0 +1,11 @@
+We Implemented the molecule Task using linear_sum_assignment
+from scipy.optimize witch directly implements the Hungarian algorithm and gave really good results. The aproach
+is that we first translate all gxl
+files into python objects containing all the needed information, since we use them different times. It took a while to understand how to use gx
+l-files( but now it's nice to know). Creating the Dirac matrix worked as in the lecture
+and the documentation for the algorithm of scipy
+explained how to handle the results to calculate ged.
+Then we simply iterate though both sets and calculated the distance matrix and used knn
+as in exercise 1. We tried to optimize the parameters Ce,Cn
+and k.  Cn and Ce = 1 and k = 3 gave good results and more testing didn't bring better results
+so that was quite useless.

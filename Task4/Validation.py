@@ -2,8 +2,10 @@ import xml.etree.ElementTree as ET
 import numpy as np
 from scipy.optimize import linear_sum_assignment as lsm
 import time
+import os
 
 gxlFilePath = "data/gxl/"
+
 
 #we use moleculs several times so we store them in a class with all the needed attribute
 #id is  the number from the gxl file and from the valid or train set, assigned i if inactive , a if active , defautl value jsut for testing
@@ -62,6 +64,20 @@ def loadMoleculesFromFile(filename):
 
     return mols
 
+
+def loadMoleculesFromFileDullPath(filename):
+  mols = list()
+  file = open('./data/' + filename + '.txt', "r")
+  for line in file:
+    # print(str.split(line, " "))
+    id, label = str.split(line, " ")
+    mols.append(Molecule(id, label))
+
+  return mols
+
+
+
+
 def __init__(self, id,assigned = "null"):
     gxlFile = gxlFilePath + str(id) + ".gxl"
     tree = ET.parse(gxlFile)
@@ -112,54 +128,92 @@ def ged(mol1, mol2, ce, cn):
 #get the lowest labels and retrn the most common of them
 def prediction(k, dist, train):
 
-    indexes = np.argpartition(dist, k)[:, 0:k]
+    indexes = np.argpartition(dist, k)[0:k]
 
 
-    nearest = np.array([[train[i].label for i in row] for row in indexes])
+    nearest = np.array([train[i].label for i in indexes])
 
-    predicted = np.array([np.argmax(np.bincount(row)) for row in nearest])
+    predicted = np.array(np.argmax(np.bincount(nearest)))
 
     return predicted
 
+
+class MoleculeVal:
+
+  def __init__(self,path , name):
+
+
+    self.id = name.replace('.gxl','')
+    gxlFile = path + name
+    tree = ET.parse(gxlFile)
+    self.atoms = list()
+
+    for node in tree.findall(".//string"): #path to and Atom see https://docs.python.org/2/library/xml.etree.elementtree.html
+        node_value = node.text
+        #there might be useless white space
+        self.atoms.append(''.join(str(ord(c)) for c in node_value.strip()))
+
+
+    self.atoms = np.array(self.atoms).astype(float) #numbers are better than strings
+    self.atomCount = len(self.atoms)
+    self.degrees = getDegrees(tree, self.atomCount) #saving all needed edges
 
 
 #load the molecules
 valid = loadMoleculesFromFile('valid')
 train = loadMoleculesFromFile('train')
 
+
+train = valid + train
+
+Validation = list()
+path = "gxl/"
+for filename in os.listdir(path):
+    if filename.endswith(".gxl"):
+
+      Validation.append(MoleculeVal(path , filename))
+
+print(Validation)
+
+
+
+
+
 # cost arrays and ks
-Cn = [ 1, 10, 50,100]
-Ce = [ 1, 10,50, 100]
-K = [1, 2, 3, 4, 5, 10, 15,50,100] # added 2 and 4 after good results with 3
+Cn = [1]
+Ce = [1]
+k = 3 # added 2 and 4 after good results with 3
 
 #save results
-name = "results" + time.strftime("%d:%H:%M:%S") + ".txt"
+name = "PuffGirlsOutPut"
 
 
 
 for n in Cn:
   for e in  Ce:
-    dist = np.zeros((len(train),len(valid)))
+    dist = np.zeros((len(Validation),len(train)))
     print('calc dists for cn=' + str(n) + ' ce=' + str(e))
     start = time.time()
 
-    for i in range(0 ,len(train)-1):
-      for j in range(0 ,len(valid)-1):
-        dist[i,j] = ged(valid[i], train[j], n, e)
 
+    for j in range(0 ,len(Validation)-1):
+      for i in range(0, len(train) - 1):
+        dist[j,i] = ged(Validation[j], train[i], n, e)
 
+      predicted = prediction(k, dist[j], train)
+      print(predicted)
 
-    for k in K:
+      label = ""
 
-      predicted = prediction(k,dist,train)
-
-      labels = np.array([valid[i].label for i in range(0, len(valid))])
-
-      acc = np.sum(np.equal(labels, predicted)) / len(valid)
+      if(predicted == 0):
+        label = 'i'
+      else:
+        label = 'a'
 
       file = open(name, "a")
-      file.write("\n acc:" + str(acc) + " k=" + str(k) + " cn=" + str(n) + " ce=" + str(e))
+      file.write("\n" + Validation[j].id + "," + label)
       file.close()
+
 
 
 
