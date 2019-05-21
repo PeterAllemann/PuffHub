@@ -1,7 +1,10 @@
 """Handles the data."""
+import os
 
 TRANSCRIPTION_PATH = './ground-truth/transcription.txt'
-KEYWORDS = "task/keywords.txt"
+KEYWORDS = "task/keywords_train.txt"
+KEYWORDS_TEST = "task/keywords.txt"
+IMG_PATH = "Cropped-images/"
 
 
 def get_train_sample(keyword):
@@ -15,9 +18,17 @@ def get_train_sample(keyword):
             return word[0:9]
 
 
-def load_test_words():
-    """Loads the test words."""
-    return
+def get_train_sample_for_test(keyword):
+    """Gets a train image that matches the keyword."""
+    file = open(KEYWORDS_TEST, 'r')
+    lines = file.readlines()
+    file.close()
+    train_sample = ''
+    for line in lines:
+        transcript, word_id = str.split(line, ",")
+        if transcript == keyword:
+            train_sample = word_id.rstrip('\n')
+    return train_sample
 
 
 def load_valid_words():
@@ -30,6 +41,12 @@ def load_valid_words():
         if int(word[0:3]) >= 300:
             valid_word_list.append(word[0:9])
     return valid_word_list
+
+
+def load_test_words():
+    """Loads the validation words."""
+    return [f.rstrip('.png\n') for f in os.listdir(IMG_PATH) if
+            ((os.path.splitext(f)[-1] == '.png') & (int(f[0:3]) > 304))]
 
 
 def load_train_word_dict():
@@ -62,4 +79,16 @@ def load_keywords():
     file.close()
     for word in words:
         keywords.append(word.rstrip('\n'))
+    return keywords
+
+
+def load_keywords_for_test():
+    """Loads the keywords."""
+    keywords = []
+    file = open(KEYWORDS_TEST, 'r')
+    lines = file.readlines()
+    file.close()
+    for line in lines:
+        transcript, word_id = str.split(line, ",")
+        keywords.append(transcript.rstrip('\n'))
     return keywords
