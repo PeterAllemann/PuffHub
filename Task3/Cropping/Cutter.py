@@ -8,15 +8,22 @@ import svgpathtools as svg
 from skimage import filters
 
 # Get training paths
-paths = [0] * 15
-attributes = [0] * 15
+paths = [0] * 5
+attributes = [0] * 5
 
-for i in range(10):
-    paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/27' + str(i) + '.svg')
+# for i in range(10):
+#     paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/27' + str(i) + '.svg')
+#
+# # Get test paths
+# for i in range(10, 15):
+#     paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/30' + str(i - 10) + '.svg')
 
-# Get test paths
-for i in range(10, 15):
-    paths[i], attributes[i] = svg.svg2paths('../ground-truth/locations/30' + str(i - 10) + '.svg')
+paths[0], attributes[0] = svg.svg2paths('../ground-truth/locations/305.svg')
+paths[1], attributes[1] = svg.svg2paths('../ground-truth/locations/306.svg')
+paths[2], attributes[2] = svg.svg2paths('../ground-truth/locations/307.svg')
+paths[3], attributes[3] = svg.svg2paths('../ground-truth/locations/308.svg')
+paths[4], attributes[4] = svg.svg2paths('../ground-truth/locations/309.svg')
+
 
 # convert for convenience
 polygons = []

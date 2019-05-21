@@ -4,7 +4,8 @@ It prints and stores everything into a text file.
 """
 from Task3.keyword_spotter import get_similar_images
 from Task3.service import load_train_word_dict, load_valid_word_dict, \
-    load_keywords, get_train_sample, load_valid_words
+    load_keywords, get_train_sample, load_valid_words, load_test_words, load_keywords_for_test, \
+    get_train_sample_for_test
 
 IMG_PATH = "Cropped-images/"
 IMG_ENDING = ".png"
@@ -12,24 +13,24 @@ TRANSCRIPTION_PATH = './ground-truth/transcription.txt'
 RESULTS_PATH = 'results.txt'
 
 VALID_WORDS = load_valid_words()
-# TEST_WORDS = load_test_words() # TODO: use this for the evaluation task
+TEST_WORDS = load_test_words()
 
 TRAIN_WORD_DICT = load_train_word_dict()
 VALID_WORD_DICT = load_valid_word_dict()
-# TEST_WORD_DICT = load_test_words() # TODO: use this for the evaluation task
 
 KEYWORDS = load_keywords()
+KEYWORDS_TEST = load_keywords_for_test()
 
 
 def do_keyword_spotting():
     """Starts the keyword spotting."""
-    for keyword in KEYWORDS:
-        train_word = get_train_sample(keyword)
-        result = get_similar_images(train_word, VALID_WORDS)
-        tpt, fpt, tnt, fnt = get_confusion_matrix(keyword, result)
-        print_results(tpt, fpt, tnt, fnt)
+    for keyword in KEYWORDS_TEST:
+        train_word = get_train_sample_for_test(keyword)
+        result = get_similar_images(train_word, TEST_WORDS)
+        print('result: {}'.format(result))
+        # tpt, fpt, tnt, fnt = get_confusion_matrix(keyword, result)
+        # print_results(tpt, fpt, tnt, fnt)
         save_results(keyword, result)
-        break
 
 
 def get_confusion_matrix(keyword, retrieved_words):

@@ -8,19 +8,19 @@ from scipy.spatial.distance import euclidean
 from Task3.features import extract_features, normalize_features
 
 IMG_PATH = "Cropped-images/"
-KEYWORDS = "task/keywords.txt"
+KEYWORDS = "task/keywords_train.txt"
 IMG_ENDING = ".png"
 
 PERCENTAGE = 0.9
 LIMIT = 0.2
 
 
-def calculate_distances(test_word, valid_words):
+def calculate_distances(test_word, words):
     """Calculates the distance"""
     distances = list()
     test_img = Image.open(IMG_PATH + test_word + IMG_ENDING)
     test_img_fv = normalize_features(extract_features(test_img), 5)
-    for word in valid_words:
+    for word in words:
         train_image = Image.open(IMG_PATH + word + IMG_ENDING)
         train_image_fv = normalize_features(extract_features(train_image), 5)
         dist, _ = fastdtw(test_img_fv, train_image_fv, dist=euclidean)
@@ -61,7 +61,7 @@ def get_most_similar(distances):
     return most_similar
 
 
-def get_similar_images(test_word, train_words):
+def get_similar_images(word, words):
     """Gets similar images."""
-    distances = calculate_distances(test_word, train_words)
+    distances = calculate_distances(word, words)
     return get_most_similar(distances)
